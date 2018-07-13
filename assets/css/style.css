@@ -10,3 +10,7 @@ html {
   /* Full height */
   height: 100%;
 }
+
+button {
+  margin-right: 10px;
+}
