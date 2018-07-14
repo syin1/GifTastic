@@ -12,7 +12,7 @@ $(document).ready(function() {
     'boxing'
   ];
 
-  var limit = 5;
+  var limit = 10;
 
   for (var i = 0; i < topics.length; i++) {
     var onebutton = $("<button type='button', class='btn btn-success'>").text(
@@ -39,12 +39,24 @@ $(document).ready(function() {
     }).then(function(response) {
       console.log(response);
 
+      $('.images').text('');
+
       for (var i = 0; i < limit; i++) {
-        oneimage = response.data[i].images.fixed_height.url;
-        imagediv = $('<img>');
+        var oneimage = response.data[i].images.fixed_height.url;
+        var onerating = response.data[i].rating;
+
+        var container = $("<div class='imgcontainer'>");
+
+        var imagediv = $('<img>');
         imagediv.attr('src', oneimage);
         imagediv.attr('alt', searchTerm + ' image');
-        $('.images').append(imagediv);
+
+        var p = $('<p>').text('Rating: ' + onerating);
+
+        container.append(p);
+        container.append(imagediv);
+
+        $('.images').append(container);
       }
     });
   });
