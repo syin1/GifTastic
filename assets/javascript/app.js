@@ -43,15 +43,20 @@ $(document).ready(function() {
       method: 'GET'
     }).then(function(response) {
       $('.images').text('');
+      console.log(response);
 
       for (var i = 0; i < limit; i++) {
-        var oneimage = response.data[i].images.fixed_height.url;
+        var onegif = response.data[i].images.fixed_height.url;
+        var onestill = response.data[i].images.fixed_height_still.url;
         var onerating = response.data[i].rating;
 
         var container = $("<div class='imgcontainer'>");
 
         var imagediv = $('<img>');
-        imagediv.attr('src', oneimage);
+        imagediv.attr('src', onestill);
+        imagediv.attr('data-still', onestill);
+        imagediv.attr('data-animate', onegif);
+        imagediv.attr('data-state', 'still');
         imagediv.attr('alt', searchTerm + ' image');
 
         var p = $('<p>').text('Rating: ' + onerating);
@@ -67,5 +72,17 @@ $(document).ready(function() {
   $('.submit').on('click', function() {
     topics.push($('#sport-input').val());
     displayTopics();
+  });
+
+  $(document.body).on('click', 'img', function() {
+    var state = $(this).attr('data-state');
+
+    if (state === 'still') {
+      $(this).attr('src', $(this).attr('data-animate'));
+      $(this).attr('data-state', 'animate');
+    } else if (state === 'animate') {
+      $(this).attr('src', $(this).attr('data-still'));
+      $(this).attr('data-state', 'still');
+    }
   });
 });
