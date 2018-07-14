@@ -7,11 +7,15 @@ html {
   /* The image used */
   background-image: url('../images/giftly.png');
   min-height: 100%;
-  border: 0.1px solid white;
+  border: 0.1px solid #ebe8d8;
 }
 
 button {
   margin-right: 10px;
+}
+
+.btn-category {
+  margin-top: 10px;
 }
 
 .imgcontainer,

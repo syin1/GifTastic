@@ -15,13 +15,13 @@ $(document).ready(function() {
   var limit = 10;
 
   for (var i = 0; i < topics.length; i++) {
-    var onebutton = $("<button type='button', class='btn btn-success'>").text(
-      topics[i]
-    );
+    var onebutton = $(
+      "<button type='button', class='btn btn-success btn-category'>"
+    ).text(topics[i]);
     $('.buttons').append(onebutton);
   }
 
-  $('button').on('click', function() {
+  $('.btn-category').on('click', function() {
     var apikey = 'fZ5dIQx9aTA23h20a4GGZGZvc7bf7hyj';
     var searchTerm = $(this).text();
 
