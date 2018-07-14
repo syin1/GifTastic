@@ -14,14 +14,19 @@ $(document).ready(function() {
 
   var limit = 10;
 
-  for (var i = 0; i < topics.length; i++) {
-    var onebutton = $(
-      "<button type='button', class='btn btn-success btn-category'>"
-    ).text(topics[i]);
-    $('.buttons').append(onebutton);
+  function displayTopics() {
+    $('.buttons').html('');
+    for (var i = 0; i < topics.length; i++) {
+      var onebutton = $(
+        "<button type='button' class='btn btn-success btn-category'>"
+      ).text(topics[i]);
+      $('.buttons').append(onebutton);
+    }
   }
 
-  $('.btn-category').on('click', function() {
+  displayTopics();
+
+  $(document.body).on('click', '.btn-category', function() {
     var apikey = 'fZ5dIQx9aTA23h20a4GGZGZvc7bf7hyj';
     var searchTerm = $(this).text();
 
@@ -37,8 +42,6 @@ $(document).ready(function() {
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
-      console.log(response);
-
       $('.images').text('');
 
       for (var i = 0; i < limit; i++) {
@@ -59,5 +62,10 @@ $(document).ready(function() {
         $('.images').append(container);
       }
     });
+  });
+
+  $('.submit').on('click', function() {
+    topics.push($('#sport-input').val());
+    displayTopics();
   });
 });
