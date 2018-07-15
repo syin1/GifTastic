@@ -17,36 +17,35 @@
 </head>
 
 <body>
-  <div class="bg">
-    <div class="container">
-      <div class="row">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
         <div class="buttons"></div>
       </div>
-      <br>
-      <div class="row">
-        <div class="col-md-10">
-          <div class="images"></div>
-        </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <form id="sport-form">
+          <button type="button" class="btn btn-info loadmore">
+            <i class="fas fa-images"></i> Load More Images</button>
+          <br>
+          <br>
+          <div class="form-group">
+            <label for="sport-input">Add a sport, or
+              <br>anything you like!</label>
+            <input type="text" class="form-control" id="sport-input">
+          </div>
 
-        <div class="col-md-2">
-          <button type="button" class="btn btn-info loadmore">Load More Images</button>
-
-          <form id="sport-form">
-            <div class="form-group">
-              <label for="sport-input">Add a sport, or
-                <br>anything you like!</label>
-              <input type="text" class="form-control" id="sport-input">
-            </div>
-
-            <button type="button" class="btn btn-primary submit">Submit</button>
-          </form>
-        </div>
+          <button type="button" class="btn btn-primary submit">
+            <i class="fas fa-check-circle"></i> Submit</button>
+        </form>
+      </div>
+      <div class="col-md-10">
+        <div class="images"></div>
       </div>
     </div>
   </div>
-
-
-
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="assets/javascript/app.js"></script>
 </body>

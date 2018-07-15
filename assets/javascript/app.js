@@ -4,12 +4,15 @@ $(document).ready(function() {
     'basketball',
     'hockey',
     'table tennis',
-    'golf',
+    'skiing',
     'soccer',
-    'baseball',
     'bowling',
-    'fencing',
-    'boxing'
+    'skating',
+    'boxing',
+    'swimming',
+    'archery',
+    'cycling',
+    'diving'
   ];
 
   var apikey = 'fZ5dIQx9aTA23h20a4GGZGZvc7bf7hyj';
