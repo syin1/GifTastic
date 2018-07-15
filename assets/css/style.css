@@ -40,3 +40,16 @@ p.metadata {
 #sport-input {
   width: 180px;
 }
+
+.download {
+  padding: 1px;
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.download:hover {
+  background-color: RoyalBlue;
+}
