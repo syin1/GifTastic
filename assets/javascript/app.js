@@ -33,6 +33,9 @@ $(document).ready(function() {
       var onegif = response.data[i].images.fixed_height.url;
       var onestill = response.data[i].images.fixed_height_still.url;
       var onerating = response.data[i].rating;
+      var datetime = response.data[i].import_datetime;
+
+      var onetitle = response.data[i].title;
 
       var container = $("<div class='imgcontainer'>");
 
@@ -43,9 +46,15 @@ $(document).ready(function() {
       imagediv.attr('data-state', 'still');
       imagediv.attr('alt', searchTerm + ' image');
 
-      var p = $('<p>').text('Rating: ' + onerating);
+      var p = $("<p class='metadata'>").text('Rating: ' + onerating);
+      var title = $("<p class='metadata'>").text('Title: ' + onetitle);
+      var datetime = $("<p class='metadata'>").text(
+        'Upload Date/Time: ' + datetime
+      );
 
+      container.append(title);
       container.append(p);
+      container.append(datetime);
       container.append(imagediv);
 
       $('.images').prepend(container);
@@ -69,14 +78,19 @@ $(document).ready(function() {
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
+      console.log(response);
       $('.images').text('');
       displayImages(response, searchTerm);
     });
   });
 
   $('.submit').on('click', function() {
-    topics.push($('#sport-input').val());
-    displayTopics();
+    var addTerm = $('#sport-input').val();
+
+    if (addTerm !== '') {
+      topics.push(addTerm);
+      displayTopics();
+    }
   });
 
   $(document.body).on('click', 'img', function() {

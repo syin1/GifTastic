@@ -1,6 +1,7 @@
 body,
 html {
   height: 100%;
+  font-family: 'Noto Serif', serif;
 }
 
 .bg {
@@ -27,4 +28,10 @@ button {
 
 .images {
   margin-bottom: 30px;
+}
+
+p.metadata {
+  margin-bottom: 0px;
+  font-size: 15pt;
+  font-family: 'Markazi Text', serif;
 }
