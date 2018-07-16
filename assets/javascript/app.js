@@ -37,14 +37,11 @@ $(document).ready(function() {
       var onestill = response.data[i].images.fixed_height_still.url;
       var onerating = response.data[i].rating;
       var datetime = response.data[i].import_datetime;
-      // var download = $(
-      //   "<a href='" +
-      //     onegif +
-      //     "' download='myimage'><i class='fas fa-cloud-download-alt'></i> Download</a>"
-      // );
 
       var download = $(
-        "<button class='btn download'><i class='fa fa-download'></i> Download</button>"
+        "<a href='" +
+          onegif +
+          "' download><i class='fas fa-cloud-download-alt'></i> Download</a>"
       );
 
       var onetitle = response.data[i].title + '   ';
@@ -91,7 +88,6 @@ $(document).ready(function() {
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
-      console.log(response);
       $('.images').text('');
       displayImages(response, searchTerm);
     });
