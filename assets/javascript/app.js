@@ -37,7 +37,7 @@ $(document).ready(function() {
       var onestill = response.data[i].images.fixed_height_still.url;
       var onerating = response.data[i].rating;
       var datetime = response.data[i].import_datetime;
-      var favoriteimg = response.data[i].images.fixed_width_small.url;
+      var favoriteimg = response.data[i].images.fixed_width.url;
 
       var download = $(
         "<a href='" +
@@ -143,6 +143,7 @@ $(document).ready(function() {
   });
 
   $(document.body).on('click', '.addfavorite', function() {
-    alert($(this).attr('data-attr'));
+    favimg = $('<img>').attr('src', $(this).attr('data-attr'));
+    $('#myfavorites').append(favimg);
   });
 });
