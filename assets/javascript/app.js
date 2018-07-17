@@ -37,12 +37,18 @@ $(document).ready(function() {
       var onestill = response.data[i].images.fixed_height_still.url;
       var onerating = response.data[i].rating;
       var datetime = response.data[i].import_datetime;
+      var favoriteimg = response.data[i].images.fixed_width_small.url;
 
       var download = $(
         "<a href='" +
           onegif +
           "' download><i class='fas fa-cloud-download-alt'></i> Download</a>"
       );
+
+      var favorite = $(
+        '<button type="button" class="btn btn-primary btn-sm addfavorite"><i class="fas fa-star"></i>  Add to Favorite</button>'
+      );
+      favorite.attr('data-attr', favoriteimg);
 
       var onetitle = response.data[i].title + '   ';
 
@@ -55,13 +61,14 @@ $(document).ready(function() {
       imagediv.attr('data-state', 'still');
       imagediv.attr('alt', searchTerm + ' image');
 
-      var p = $("<p class='metadata'>").text('Rating: ' + onerating);
+      var p = $("<p class='metadata'>").text('Rating: ' + onerating + '  ');
       var title = $("<p class='metadata'>").text('Title: ' + onetitle);
       var datetime = $("<p class='metadata'>").text(
         'Upload Date/Time: ' + datetime
       );
 
       title.append(download);
+      p.append(favorite);
       container.append(title);
       container.append(p);
       container.append(datetime);
@@ -88,6 +95,7 @@ $(document).ready(function() {
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
+      console.log(response);
       $('.images').text('');
       displayImages(response, searchTerm);
     });
@@ -132,5 +140,9 @@ $(document).ready(function() {
       $('.images').text('');
       displayImages(response, currentTerm);
     });
+  });
+
+  $(document.body).on('click', '.addfavorite', function() {
+    alert($(this).attr('data-attr'));
   });
 });
