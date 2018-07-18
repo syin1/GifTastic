@@ -1,6 +1,6 @@
 # GifTastic
 
-![Trivial Trivia Image](assets/images/Cover_Page.png)
+![Sports-themed Gif App](assets/images/Cover_Page.png)
 
 ## Technology Stack: HTML, CSS, Javascript, jQuery, Giphy API, Ajax, Local Storage
 
@@ -12,7 +12,7 @@
 
 - When the user clicks one of the still GIPHY images, the gif will animate. If the user clicks the gif again, it will stop playing.
 
-- Above every gif, its metadata (title, rating, uploade date/time) is displayed.
+- Above every gif is its metadata: title, rating, upload date/time.
 
 - On the left panel, users can add new topics of their interest.
 
