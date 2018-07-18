@@ -79,6 +79,32 @@ $(document).ready(function() {
     }
   }
 
+  // utilize local storage
+  function displayFavorite() {
+    var list = JSON.parse(localStorage.getItem('favlist'));
+
+    if (!Array.isArray(list)) {
+      list = [];
+    }
+
+    $('#myfavorites').empty();
+
+    for (var i = 0; i < list.length; i++) {
+      var anchor = $('<a download>');
+      anchor.attr('href', list[i].downloadUrl);
+
+      favimg = $('<img>')
+        .attr('src', list[i].displayUrl)
+        .addClass('favorites');
+
+      anchor.append(favimg);
+      $('#myfavorites').append(anchor);
+    }
+  }
+
+  // default behavior
+  displayFavorite();
+
   $(document.body).on('click', '.btn-category', function() {
     limit = 10;
     var searchTerm = $(this).text();
@@ -96,7 +122,6 @@ $(document).ready(function() {
       url: queryURL,
       method: 'GET'
     }).then(function(response) {
-      console.log(response);
       $('.images').text('');
       displayImages(response, searchTerm);
     });
@@ -143,15 +168,22 @@ $(document).ready(function() {
     });
   });
 
+  // adds to an array of object and save it in local storage
   $(document.body).on('click', '.addfavorite', function() {
-    var anchor = $('<a download>');
-    anchor.attr('href', $(this).attr('data-download'));
+    var list = JSON.parse(localStorage.getItem('favlist'));
 
-    favimg = $('<img>')
-      .attr('src', $(this).attr('data-attr'))
-      .addClass('favorites');
+    if (!Array.isArray(list)) {
+      list = [];
+    }
 
-    anchor.append(favimg);
-    $('#myfavorites').append(anchor);
+    var urlPackage = {
+      displayUrl: $(this).attr('data-attr'),
+      downloadUrl: $(this).attr('data-download')
+    };
+
+    list.push(urlPackage);
+
+    localStorage.setItem('favlist', JSON.stringify(list));
+    displayFavorite();
   });
 });
