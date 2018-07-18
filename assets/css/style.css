@@ -53,3 +53,7 @@ p.metadata {
 .download:hover {
   background-color: RoyalBlue;
 }
+
+.favorites {
+  margin-bottom: 15px;
+}

@@ -143,7 +143,9 @@ $(document).ready(function() {
   });
 
   $(document.body).on('click', '.addfavorite', function() {
-    favimg = $('<img>').attr('src', $(this).attr('data-attr'));
+    favimg = $('<img>')
+      .attr('src', $(this).attr('data-attr'))
+      .addClass('favorites');
     $('#myfavorites').append(favimg);
   });
 });
