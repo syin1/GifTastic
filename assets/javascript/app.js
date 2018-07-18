@@ -49,6 +49,7 @@ $(document).ready(function() {
         '<button type="button" class="btn btn-primary btn-sm addfavorite"><i class="fas fa-star"></i>  Add to Favorite</button>'
       );
       favorite.attr('data-attr', favoriteimg);
+      favorite.attr('data-download', onegif);
 
       var onetitle = response.data[i].title + '   ';
 
@@ -143,9 +144,14 @@ $(document).ready(function() {
   });
 
   $(document.body).on('click', '.addfavorite', function() {
+    var anchor = $('<a download>');
+    anchor.attr('href', $(this).attr('data-download'));
+
     favimg = $('<img>')
       .attr('src', $(this).attr('data-attr'))
       .addClass('favorites');
-    $('#myfavorites').append(favimg);
+
+    anchor.append(favimg);
+    $('#myfavorites').append(anchor);
   });
 });
